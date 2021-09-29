@@ -1,4 +1,4 @@
-# Setup for small projects
+# Real-Time Chat Ezops
 
 ## Tools 
   ### Languages
