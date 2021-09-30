@@ -1,21 +1,29 @@
-import { Controller } from "./controller";
+import { Controller } from "./contracts";
 import {PostMessages} from '../../core/usecase'
-import { badRequest, HttpResponse, ok } from "../helpers";
+import { badRequest, HttpResponse, ok, serverError } from "../helpers";
+import { Validation } from '../validations';
 
-type HttpRequest = { name: string, message: string}
-type Model = Error | any 
-export class SaveMessagesController extends Controller {
+export class SaveMessagesController implements Controller {
   constructor (
+    private readonly validation: Validation,
     private readonly save: PostMessages
-  ){
-    super();
-  }
-  async perform (body: HttpRequest): Promise<HttpResponse<Model>> {
+  ){}
+  async handle (body: SaveMessages.Request): Promise<HttpResponse> {
     try {
-    const result = await this.save.saveMessages(body)
+      const error = this.validation.validate(body)
+      if (error) return badRequest(error)
+      
+      const result = await this.save.saveMessages(body)
       return ok(result)
+
     }catch (err: any) {
-      return badRequest(err)
+      return serverError(err)
     }
+  }
+}
+
+export namespace SaveMessages {
+  export type Request = {
+    name: string, message: string
   }
 }

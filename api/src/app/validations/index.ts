@@ -1,3 +1,3 @@
 export * from './required';
-export * from './validator';
-export * from './composite'
+export * from './contracts/validator';
+export * from './composite';

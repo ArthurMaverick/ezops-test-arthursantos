@@ -1,14 +1,14 @@
-import {Validator} from './validator'
+import {Validation} from './contracts/validator'
 
-export class ValidationComposite implements Validator {
+export class ValidationComposite implements Validation {
   constructor(
-    private readonly validators: Validator[],
+    private readonly validators: Validation[],
   ){}
 
-  validate (): Error | undefined {
+  validate (input: any): Error {
     for (const validator of this.validators) {
-      const error = validator.validate()
-      if (error !== undefined) return error
+      const error = validator.validate(input)
+      if (error) return error
     }
   }
 }

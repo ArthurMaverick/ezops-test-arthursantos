@@ -1,45 +1,12 @@
-import { RequiredFieldError } from '../errors/validation'
-import { Validator } from './validator'
+import { Validation } from './contracts'
+import { MissingParamError } from '../errors/http'
 
-export class Required implements Validator {
-  constructor (
-    readonly value: any,
-    readonly fieldName?: string
-  ) {}
+export class RequiredFieldValidation implements Validation {
+  constructor (private readonly fieldName: string) {}
 
-  validate (): Error | undefined {
-    if (this.value === null || this.value === undefined) {
-      return new RequiredFieldError(this.fieldName)
-    }
-  }
-}
-
-export class RequiredString extends Required {
-  constructor (
-    override readonly value: string,
-    override readonly fieldName?: string
-  ) {
-    super(value, fieldName)
-  }
-
-  override validate (): Error | undefined {
-    if (super.validate() !== undefined || this.value === '') {
-      return new RequiredFieldError(this.fieldName)
-    }
-  }
-}
-
-export class RequiredBuffer extends Required {
-  constructor (
-    override readonly value: Buffer,
-    override readonly fieldName?: string
-  ) {
-    super(value, fieldName)
-  }
-
-  override validate (): Error | undefined {
-    if (super.validate() !== undefined || this.value.length === 0) {
-      return new RequiredFieldError(this.fieldName)
+  validate (input: any): Error {
+    if (!input[this.fieldName]) {
+      return new MissingParamError(this.fieldName)
     }
   }
 }

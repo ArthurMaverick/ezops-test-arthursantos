@@ -1,20 +1,20 @@
-import { Controller } from "./controller";
+import {Controller} from './contracts'
 import {GetMessages} from '../../core/usecase/getMessages'
-import { forbidden, HttpResponse, ok } from "../helpers";
+import { forbidden, HttpResponse, ok, serverError } from "../helpers";
 
-type Model = Error | any 
-export class FindMessagesController extends Controller {
+
+export class FindMessagesController implements Controller {
   constructor (
     private readonly find: GetMessages
-  ){
-    super();
-  }
-  async perform (): Promise<HttpResponse<Model>> {
+  ){}
+  async handle (): Promise<HttpResponse> {
+
     try {
-    const result = await this.find.findMessages()
+      const result = await this.find.findMessages()
       return ok(result)
-    }catch (err) {
-      return forbidden()
+      
+    }catch (err: any) {
+      return serverError(err)
     }
   }
 
