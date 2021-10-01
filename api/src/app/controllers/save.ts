@@ -2,6 +2,7 @@ import { Controller } from "./contracts";
 import {PostMessages} from '../../core/usecase'
 import { badRequest, HttpResponse, ok, serverError } from "../helpers";
 import { Validation } from '../validations';
+import { Server } from "socket.io";
 
 export class SaveMessagesController implements Controller {
   constructor (
@@ -9,13 +10,16 @@ export class SaveMessagesController implements Controller {
     private readonly save: PostMessages
   ){}
   async handle (body: SaveMessages.Request): Promise<HttpResponse> {
+    // console.log(body)
     try {
+      
       const error = this.validation.validate(body)
       if (error) return badRequest(error)
       
       const result = await this.save.saveMessages(body)
+      
       return ok(result)
-
+      
     }catch (err: any) {
       return serverError(err)
     }
