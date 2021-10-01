@@ -1,6 +1,6 @@
-# Real-Time Chat Ezops
+# Ezops
 
-## Chat example that exchanges messages in real time.
+## Talk to anyone anywhere 
 
 <h1 align="center">Real-Time Chat</h1>
 <div align="center">
