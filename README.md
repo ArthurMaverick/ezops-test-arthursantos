@@ -1,3 +1,3 @@
-# Real-Time Chat Ezops | API
+# Real-Time Chat Ezops
 
 ## Chat example that exchanges messages in real time.
