@@ -17,11 +17,10 @@ jobs:
       env: 
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: |
-        docker login -u  $DOCKER_USER -p $DOCKER_PASSWORD
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     
     - name: Build The Docker Image
-      run: docker build /api --file Dockerfile --tag arthursantos2228/realtime-chat:latest
+      run: docker build ./api --file Dockerfile --tag arthursantos2228/realtime-chat:latest
     
     - name: Docker push 
       run: docker push arthursantos2228/realtime-chat:latest
