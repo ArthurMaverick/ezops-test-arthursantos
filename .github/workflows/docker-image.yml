@@ -22,9 +22,6 @@ jobs:
     - name: Build The Docker Image
       run: docker build ./api --tag arthursantos2228/realtime-chat:latest 
 
-    - name: docker login 
-      run: docker login -u ${{env.USER}} -p ${{env.PASSWORD}}
-
     - name: t2
       run: echo ${{env.USER}} ${{env.PASSWORD}}
     
@@ -33,6 +30,11 @@ jobs:
 
     - name: t4
       run: echo "$USER" "$PASSWORD"
+
+    - name: docker login 
+      run: docker login -u ${{env.USER}} -p ${{env.PASSWORD}}
+
+    
     
     - name: Docker push 
       run: docker push arthursantos2228/realtime-chat:latest
