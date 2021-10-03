@@ -12,7 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: logout
       run: docker logout 
     
@@ -20,6 +19,7 @@ jobs:
       run: docker build ./api --tag arthursantos2228/realtime-chat:latest
 
     - name: docker login 
+    - shell: bash
       env:
         USER_SECURE: ${{secrets.USER_SECRET}}
         PASSWORD_SECURE: ${{secrets.PASS_SECRET}}
