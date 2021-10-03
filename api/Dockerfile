@@ -1,15 +1,12 @@
-FROM node:16.8-slim
+FROM node:16.8-slim as builder
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-
-RUN  npm ci --silence
+RUN npm install
 
 COPY . .
+RUN npm run build
 
-RUN tsc
-
-CMD ["npm", "start"]
-
-EXPOSE 8000
+EXPOSE 8080
+CMD ["npm","start"]
