@@ -24,6 +24,5 @@ jobs:
       run: docker build ./api --tag arthursantos2228/realtime-chat:latest 
     
     - name: Docker push 
-      run: docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD" \ 
-        && docker push arthursantos2228/realtime-chat:latest
+      run: docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD" && docker push arthursantos2228/realtime-chat:latest
 
