@@ -21,8 +21,8 @@ jobs:
 
     - name: docker login 
       env:
-        USER_SECURE: ${{secrets.USERNAME_ID}}
-        PASSWORD_SECURE: ${{secrets.PASSWORD_VALUE}}
+        USER_SECURE: ${{secrets.PASS_SECRET}}
+        PASSWORD_SECURE: ${{secrets.USER_SECRET}}
       run: |
         docker login -u arthursantos2228 -p Acs2228@tt7
 
