@@ -13,10 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-      # env:
-      #   USER: ${{secrets.DOCKER_USER}}
-      #   PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-
     - name: logout
       run: docker logout 
     
@@ -25,8 +21,8 @@ jobs:
 
     - name: docker login 
       env:
-        USER_SECURE: ${{ secrets.USERNAME_ID }}
-        PASSWORD_SECURE: ${{ secrets.PASSWORD_VALUE }}
+        USER_SECURE: ${{secrets.USERNAME_ID}}
+        PASSWORD_SECURE: ${{secrets.PASSWORD_VALUE}}
       run: |
         docker login -u $USER_SECURE -p $PASSWORD_SECURE 
 
