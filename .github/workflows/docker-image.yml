@@ -9,18 +9,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      USER: ${{secrets.DOCKER_USER}}
-      PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
     steps:
     - uses: actions/checkout@v2
+    
+      env:
+        USER: ${{secrets.DOCKER_USER}}
+        PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
     - name: logout
       run: docker logout 
     
     - name: Build The Docker Image
-      run: docker build ./api --tag arthursantos2228/realtime-chat:latest 
+      run: docker build ./api --tag arthursantos2228/realtime-chat:latest
 
     - name: t2
       run: echo ${{env.USER}} ${{env.PASSWORD}}
