@@ -24,9 +24,6 @@ jobs:
 
     - name: docker login 
       run: docker login -u ${{env.USER}} -p ${{env.PASSWORD}}
-    
-    - name: t1
-      run: echo ${{USER}} ${{PASSWORD}}
 
     - name: t2
       run: echo ${{env.USER}} ${{env.PASSWORD}}
