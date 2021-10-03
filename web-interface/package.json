@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,10 +13,12 @@
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "socket.io-client": "^4.2.0",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@types/react": "17.0.25",
+    "@types/socket.io-client": "^3.0.0",
     "@types/styled-components": "^5.1.14",
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "7.32.0",
