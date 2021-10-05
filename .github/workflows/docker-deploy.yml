@@ -51,6 +51,5 @@ jobs:
         passphrase: ${{secrets.PASSWORD}}
         script: docker container rm realtime-chat -f \
           docker image rm arthursantos2228/realtime-chat \
-          docker login -u arthursantos2228 -p Acs2228@tt7 \
           docker push arthursantos2228/realtime-chat:latest \
           docker-compose up -d
