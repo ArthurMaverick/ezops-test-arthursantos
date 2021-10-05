@@ -49,8 +49,5 @@ jobs:
         key: ${{secrets.PRIVATE_KEY}}
         port: ${{secrets.PORT}}
         passphrase: ${{secrets.PASSWORD}}
-        script: docker login -u arthursantos2228 -p Acs2228@tt7 \ 
-          docker container rm realtime-chat -f \
-          docker image rm arthursantos2228/realtime-chat -f \ 
-          docker-compose -f acs/docker-compose.yml up -d \
-          pwd
+        script: docker-compose -f acs/docker-compose.yml up -d 
+          pwd 
