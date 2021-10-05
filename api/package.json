@@ -11,7 +11,7 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/main/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/main/dev-server.ts",
     "start": "nodemon dist/main/server.js",
     "build": "rimraf dist && tsc"
   },

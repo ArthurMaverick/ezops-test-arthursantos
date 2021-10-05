@@ -18,13 +18,7 @@ io.on('connection', (socket) => {
 
 ExpressApp.set('socketio', io)
 
-
 setupMiddlewares(ExpressApp)
 setupRoutes(ExpressApp)
-
-
-
-
-
 
 export {httpServer}

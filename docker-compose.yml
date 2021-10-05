@@ -1,14 +1,22 @@
-# Use root/example as user/password credentials
 version: '3.1'
 services:
-  api:
-    image: arthursantos2228/realtime-chat
+  mongo:
+    image: mongo
     restart: always
-    container_name: realtime-chat
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+  api:
+    build: ./api
+    restart: always
+    container_name: realtime-chat-dev
     environment:
       PORT: 8080
-      JWT_SECRET: chaveprod
-      MONGO_URL: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
-      MONGO_URL_DEV: mongodb://root:example@mongo:27017
+      JWT_SECRET: devkey
+      MONGO_URL_DEV: mongodb://root:example@localhost:27017
     ports: 
       - "80:8080"
+
+  

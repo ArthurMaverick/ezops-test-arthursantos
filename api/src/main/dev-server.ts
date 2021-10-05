@@ -2,7 +2,7 @@ import {env} from './config/env'
 import {MongoHelper} from '../data/mongo'
 
 if (typeof env.mongoDB === 'string') {
-  MongoHelper.connect(env.mongoDB)
+  MongoHelper.connect(env.mongoDBdev)
   .then(async ()=> 
     {
     const {httpServer} = require('./config/app');
