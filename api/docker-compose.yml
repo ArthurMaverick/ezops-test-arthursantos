@@ -16,6 +16,6 @@ services:
     environment:
       PORT: 8080
       JWT_SECRET: devkey
-      MONGO_URL_DEV: mongodb://root:example@localhost:27017
+      MONGO_URL_DEV: mongodb://root:example@localhost:27017/
     ports: 
       - "80:8080"
