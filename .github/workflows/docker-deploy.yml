@@ -7,7 +7,7 @@ on:
     
 jobs:
 
-  build:
+  upload-docker-container-app-to-remote-repo:
     name: CI
     runs-on: ubuntu-latest
     environment:
@@ -31,13 +31,13 @@ jobs:
     - name: Docker push 
       run: docker push arthursantos2228/realtime-chat:latest
 
-  deploy-prod:
+  download-docker-container-app-in-cloud:
     name: CD
     runs-on: ubuntu-latest
     environment:
       name: deployprod
       url: 'http://13.66.205.253/messages'
-    needs: build
+    needs: upload-docker-container-app-to-remote-repo
 
     steps:
     - name: deploy with ssh
