@@ -50,4 +50,4 @@ jobs:
         port: ${{secrets.PORT}}
         passphrase: ${{secrets.PASSWORD}}
         script: |
-          docker-compose up -d
+          pwd && docker-compose up -d
