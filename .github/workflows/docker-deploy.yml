@@ -1,0 +1,56 @@
+name: Realtime chat CI/CD
+on: 
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name: ci
+    runs-on: ubuntu-latest
+    environment:
+      name: main
+        
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: logout
+      run: docker logout 
+    
+    - name: Build The Docker Image
+      run: docker build ./api --tag arthursantos2228/realtime-chat:latest
+
+    - name: docker login 
+      env:
+        USER_SECURE: ${{secrets.USER_SECRET}}
+        PASSWORD_SECURE: ${{secrets.PASS_SECRET}}
+      run: |
+        docker login -u $USER_SECURE -p $PASSWORD_SECURE 
+
+    - name: Docker push 
+      run: docker push arthursantos2228/realtime-chat:latest
+
+  deploy-prod:
+    name: CD
+    runs-on: ubuntu-latest
+    environment:
+      name: deployprod
+      url: 'http://13.66.205.253/'
+    needs: build
+
+    steps:
+    - name: deploy with ssh
+      uses: appleboy/ssh-action@master
+      with:
+        key: ${{secrets.PRIVATE_KEY}}
+        username: ${{secrets.USERNAME}}
+        host: ${{secrets.HOST}}
+        password: ${{secrets.PASSWORD}}
+        port: ${{secrets.PORT}}
+        script: sudo su \
+          docker container stop realtime-chat \
+          docker container rm realtime-chat \
+          docker image rm arthursantos2228/realtime-chat \
+          docker login -u arthursantos2228 -p Acs2228@tt7 \
+          docker push arthursantos2228/realtime-chat:latest \
+          docker-compose up -d
+          
