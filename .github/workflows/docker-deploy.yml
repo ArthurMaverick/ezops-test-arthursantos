@@ -49,4 +49,5 @@ jobs:
         key: ${{secrets.PRIVATE_KEY}}
         port: ${{secrets.PORT}}
         passphrase: ${{secrets.PASSWORD}}
-        script: docker-compose --help
+        script: |
+          docker-compose up -d
