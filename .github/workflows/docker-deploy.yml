@@ -7,30 +7,30 @@ on:
     
 jobs:
 
-  build:
-    name: CI
-    runs-on: ubuntu-latest
-    environment:
-      name: main
+  # build:
+  #   name: CI
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: main
         
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: logout
-      run: docker logout 
+  #   - name: logout
+  #     run: docker logout 
     
-    - name: Build The Docker Image
-      run: docker build ./api --tag arthursantos2228/realtime-chat:latest
+  #   - name: Build The Docker Image
+  #     run: docker build ./api --tag arthursantos2228/realtime-chat:latest
 
-    - name: docker login 
-      env:
-        USER_SECURE: ${{secrets.USER_SECRET}}
-        PASSWORD_SECURE: ${{secrets.PASS_SECRET}}
-      run: |
-        docker login -u $USER_SECURE -p $PASSWORD_SECURE 
+  #   - name: docker login 
+  #     env:
+  #       USER_SECURE: ${{secrets.USER_SECRET}}
+  #       PASSWORD_SECURE: ${{secrets.PASS_SECRET}}
+  #     run: |
+  #       docker login -u $USER_SECURE -p $PASSWORD_SECURE 
 
-    - name: Docker push 
-      run: docker push arthursantos2228/realtime-chat:latest
+  #   - name: Docker push 
+  #     run: docker push arthursantos2228/realtime-chat:latest
 
   deploy-prod:
     name: CD
