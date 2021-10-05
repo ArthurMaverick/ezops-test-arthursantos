@@ -49,5 +49,5 @@ jobs:
         key: ${{secrets.PRIVATE_KEY}}
         port: ${{secrets.PORT}}
         passphrase: ${{secrets.PASSWORD}}
-        script: docker-compose -f acs/docker-compose.yml up -d \
-          pwd 
+        script: pwd \ 
+          docker-compose -f home/acs/docker-compose.yml up -d 
