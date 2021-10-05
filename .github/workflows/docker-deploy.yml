@@ -15,7 +15,6 @@ jobs:
         
   #   steps:
   #   - uses: actions/checkout@v2
-
   #   - name: logout
   #     run: docker logout 
     
@@ -31,6 +30,7 @@ jobs:
 
   #   - name: Docker push 
   #     run: docker push arthursantos2228/realtime-chat:latest
+  #  oi 
 
   deploy-prod:
     name: CD
