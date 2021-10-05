@@ -2,10 +2,13 @@
 version: '3.1'
 services:
   api:
+    image: arthursantos2228/realtime-chat
+    restart: always
+    container_name: realtime-chat
     environment:
       PORT: 8080
       JWT_SECRET: chaveprod
+      MONGO_URL: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
       MONGO_URL_DEV: mongodb://root:example@mongo:27017
-    image: arthursantos2228/realtime-chat
-    restart: always
-
+    ports: 
+      - "80:8080"
