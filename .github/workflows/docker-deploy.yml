@@ -49,4 +49,4 @@ jobs:
         key: ${{secrets.PRIVATE_KEY}}
         port: ${{secrets.PORT}}
         passphrase: ${{secrets.PASSWORD}}
-        script: docker-compose.yml up -d
+        script: docker-compose --help
