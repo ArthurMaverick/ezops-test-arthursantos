@@ -4,6 +4,5 @@ src
 env.*
 *.env.*
 .gitignore
-tsconfig
 README.md
 LINCENCE
