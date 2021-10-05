@@ -5,11 +5,10 @@ on:
   pull_request:
     branches: [main]
     
-
 jobs:
 
   build:
-    name: ci
+    name: CI
     runs-on: ubuntu-latest
     environment:
       name: main
@@ -38,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: deployprod
-      url: 'http://13.66.205.253/'
+      url: 'http://13.66.205.253/messages'
     needs: build
 
     steps:
