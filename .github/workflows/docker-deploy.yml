@@ -51,6 +51,6 @@ jobs:
         passphrase: ${{secrets.PASSWORD}} 
         debug: true
         script: |
-          sudo docker container rm realtime-chat \
+          sudo docker container rm realtime-chat -f \
           && sudo docker image rm arthursantos2228/realtime-chat \
           && sudo docker-compose up -d
