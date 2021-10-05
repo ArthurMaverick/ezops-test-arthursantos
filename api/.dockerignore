@@ -5,3 +5,4 @@ env.*
 .gitignore
 README.md
 LINCENCE
+docker-compose.yml

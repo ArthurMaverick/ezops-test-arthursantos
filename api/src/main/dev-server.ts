@@ -1,7 +1,7 @@
 import {env} from './config/env' 
 import {MongoHelper} from '../data/mongo'
 
-if (typeof env.mongoDB === 'string') {
+if (typeof env.mongoDBdev === 'string') {
   MongoHelper.connect(env.mongoDBdev)
   .then(async ()=> 
     {

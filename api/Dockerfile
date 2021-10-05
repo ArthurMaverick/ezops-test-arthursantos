@@ -5,9 +5,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --silence
 
+
 COPY . .
 RUN npm run build
-RUN rm -rf tsconfig.json && rm -rf src -f
+RUN rm -rf tsconfig.json && rm -rf docker-compose.yml && rm -rf src -f
 
 EXPOSE 8080
 CMD ["npm","start"]

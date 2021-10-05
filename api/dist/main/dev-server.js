@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const env_1 = require("./config/env");
 const mongo_1 = require("../data/mongo");
-if (typeof env_1.env.mongoDB === 'string') {
+if (typeof env_1.env.mongoDBdev === 'string') {
     mongo_1.MongoHelper.connect(env_1.env.mongoDBdev)
         .then(async () => {
         const { httpServer } = require('./config/app');
