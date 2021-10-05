@@ -51,4 +51,6 @@ jobs:
         passphrase: ${{secrets.PASSWORD}} 
         debug: true
         script: |
-          sudo docker-compose up -d
+          && docker container rm realtime-chat \
+          && docker image rm arthursantos2228/realtime-chat \
+          && sudo docker-compose up -d
