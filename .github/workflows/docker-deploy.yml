@@ -50,5 +50,10 @@ jobs:
         key: ${{secrets.PRIVATE_KEY}}
         port: ${{secrets.PORT}}
         passphrase: ${{secrets.PASSWORD}}
-        script: echo 'hello word'
-          
+        script: sudo su \
+          docker container stop realtime-chat \
+          docker container rm realtime-chat \
+          docker image rm arthursantos2228/realtime-chat \
+          docker login -u arthursantos2228 -p Acs2228@tt7 \
+          docker push arthursantos2228/realtime-chat:latest \
+          docker-compose up -d
