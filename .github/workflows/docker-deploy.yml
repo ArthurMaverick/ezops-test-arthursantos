@@ -38,7 +38,7 @@ jobs:
     environment:
       name: deployprod
       url: 'http://13.66.205.253/messages'
-    needs: build
+    # needs: build
 
     steps:
     - name: deploy with ssh
