@@ -16,7 +16,7 @@ export class AccountMongoRepository implements GetMessages, PostMessages {
 
   async saveMessages( payload: PostMessages.Input ): PostMessages.Output<boolean> {
     const accountCollection = MongoHelper.getCollection('messages')
-    const result = await accountCollection.insertOne(payload)
+    const result = await accountCollection.insertOne({message: payload.message, name: payload.name})
     return result !== null
   }
   

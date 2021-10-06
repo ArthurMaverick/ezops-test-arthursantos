@@ -10,7 +10,6 @@ export class SaveMessagesController implements Controller {
     private readonly save: PostMessages
   ){}
   async handle (body: SaveMessages.Request): Promise<HttpResponse> {
-    // console.log(body)
     try {
       
       const error = this.validation.validate(body)
@@ -18,9 +17,11 @@ export class SaveMessagesController implements Controller {
       
       const result = await this.save.saveMessages(body)
       
+      body.socket.emit('send', {name: body.name, message: body.message})
       return ok(result)
       
     }catch (err: any) {
+      console.log(err)
       return serverError(err)
     }
   }
@@ -28,6 +29,9 @@ export class SaveMessagesController implements Controller {
 
 export namespace SaveMessages {
   export type Request = {
-    name: string, message: string
+    name: string, 
+    message: string,
+    socket: Server 
+
   }
 }
