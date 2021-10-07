@@ -18,6 +18,11 @@ export class SaveMessagesController implements Controller {
       const result = await this.save.saveMessages(body)
       
       body.socket.emit('send', {name: body.name, message: body.message})
+
+      // body.socket.on('exit', (e) => {
+      //   body.socket.disconnectSockets(true)
+      //   console.log('disconect', e)
+      // })
       return ok(result)
       
     }catch (err: any) {

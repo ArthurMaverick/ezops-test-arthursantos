@@ -15,7 +15,7 @@ export const MongoHelper = {
   },
 
   getCollection (name: string): Collection {
-    return this.client.db().collection(name)
+    return this.client.db('simple-chat').collection(name)
   },
 
   map: (data: any): any => {
