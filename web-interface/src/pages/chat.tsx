@@ -49,10 +49,9 @@ useEffect(() => {
 }, [request])
 
 async function request () {
-  await req.post('http://localhost:8080/messages', {name: name, message: message} ).catch(err=>err)
+  await req.post('http://13.66.205.253/messages', {name: name, message: message} ).catch(err=>err)
 }
 
-  
   return (
     <Dashboard req={request} getMessage={setMessage} msg={message} talks={talks} setToggle={setToggle} toggle={toggle}/>
   )
