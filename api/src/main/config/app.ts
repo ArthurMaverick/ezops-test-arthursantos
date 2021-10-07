@@ -8,7 +8,7 @@ const ExpressApp  = express()
 const httpServer  =  HttpServer(ExpressApp)
 const io          = new SocketServer(httpServer, {
   cors: {
-    origin: "https://ezops-test-arthursantos.vercel.app/",
+    origin: "*",
     maxAge: 10_000
   }
 })
