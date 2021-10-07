@@ -49,7 +49,7 @@ useEffect(() => {
 }, [request])
 
 async function request () {
-  await req.post('http://13.66.205.253/messages', {name: name, message: message} ).catch(err=>err)
+  await req.post('http://13.66.205.253:7000/messages', {name: name, message: message} ).catch(err=>err)
 }
 
   return (

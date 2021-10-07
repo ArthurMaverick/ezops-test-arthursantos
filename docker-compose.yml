@@ -1,16 +1,8 @@
 version: '3.1'
 services:
 
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - "27017:27017"
   api:
-    build: .
+    build: ./api
     restart: always
     container_name: realtime-chat-dev
     environment:
@@ -18,4 +10,10 @@ services:
       JWT_SECRET: devkey
       MONGO_URL_DEV: mongodb://root:example@localhost:27017/
     ports: 
-      - "80:8080"
+      - "7000:8080"
+  web:
+    build: ./web-interface
+    restart: always
+    constainer-name: frontend
+  ports:
+      - "80:3000"

@@ -18,8 +18,11 @@ jobs:
     - name: logout
       run: docker logout 
     
-    - name: Build The Docker Image
+    - name: Build The Docker api Image
       run: docker build ./api --tag arthursantos2228/realtime-chat:latest
+
+    - name: Build The Docker web Image
+      run: docker build ./web-interface --tag arthursantos2228/web-realtime:latest
 
     - name: docker login 
       env:
@@ -28,15 +31,18 @@ jobs:
       run: |
         docker login -u $USER_SECURE -p $PASSWORD_SECURE 
 
-    - name: Docker push 
+    - name: Docker push api
       run: docker push arthursantos2228/realtime-chat:latest
+
+    - name: Docker push web
+      run: docker push arthursantos2228/web-realtime:latest
 
   download-docker-container-app-in-cloud:
     name: CD
     runs-on: ubuntu-latest
     environment:
       name: deployprod
-      url: 'http://13.66.205.253/messages'
+      url: 'http://13.66.205.253/'
     needs: upload-docker-container-app-to-remote-repo
 
     steps:
@@ -51,5 +57,7 @@ jobs:
         debug: true
         script: |
           sudo docker container rm realtime-chat -f \
+          sudo docker container rm realtime-chat-web -f \
           && sudo docker image rm arthursantos2228/realtime-chat \
+          && sudo docker image rm arthursantos2228/web-realtime \
           && sudo docker-compose up -d

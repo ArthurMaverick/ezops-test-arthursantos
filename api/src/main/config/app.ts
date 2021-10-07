@@ -8,7 +8,7 @@ const ExpressApp  = express()
 const httpServer  =  HttpServer(ExpressApp)
 const io          = new SocketServer(httpServer, {
   cors: {
-    origin: "*",
+    origin: "*", //change
     maxAge: 10_000
   }
 })
