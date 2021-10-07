@@ -2,18 +2,19 @@ version: '3.1'
 services:
 
   api:
-    build: ./api
+    image: arthursantos2228/realtime-chat
     restart: always
-    container_name: realtime-chat-dev
+    container_name: realtime-chat
     environment:
       PORT: 8080
-      JWT_SECRET: devkey
-      MONGO_URL_DEV: mongodb://root:example@localhost:27017/
-    ports: 
+      JWT_SECRET: chaveprod
+      MONGO_URL: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
+      MONGO_URL_DEV: mongodb://root:example@mongo:27017
+    ports:  
       - "7000:8080"
   web:
-    build: ./web-interface
+    image: arthursantos2228/web-realtime
     restart: always
-    constainer-name: frontend
-  ports:
+    constainer-name: realtime-chat-web
+    ports:
       - "80:3000"
