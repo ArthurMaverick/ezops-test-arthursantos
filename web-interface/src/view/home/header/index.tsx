@@ -13,12 +13,17 @@ export const Header = () => {
       <ul>
         <li>
           <Link href="/login">
-            <a >Login</a>
+            <a >sign in</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/signin">
+            <a >sign up</a>
           </Link>
         </li>
         <li>
           <Link href="https://github.com/ArthurMaverick/ezops-test-arthursantos" >
-            <a target="_blank">Github</a>
+            <a target="_blank">github</a>
           </Link>
         </li>
       </ul>
