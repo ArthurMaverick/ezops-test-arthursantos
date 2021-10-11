@@ -10,6 +10,6 @@ COPY . .
 RUN npm run build
 RUN rm -rf tsconfig.json && rm -rf src -f
 
-EXPOSE 8080
+EXPOSE 7000
 CMD ["npm","start"]
 
