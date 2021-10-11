@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: deployprod
-      url: 'http://13.66.205.253/'
+      url: 'https://arthursantos.tech/'
     needs: upload-docker-container-app-to-remote-repo
 
     steps:

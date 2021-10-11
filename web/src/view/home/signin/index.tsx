@@ -1,20 +1,21 @@
 import React from 'react'
-import { LoginElement } from './styled'
+import { SignInElement } from './styled'
 import req from 'axios'
 import jwt_decode from "jwt-decode";
 import { useRouter } from 'next/dist/client/router'; 
-import Link from 'next/link';
-
-export const Loging = () => {
+export const SignIn = () => {
   const [getusername, setGetusername] = React.useState<string>('')
   const [getpassword, setGetpassword] = React.useState<string>('')
+  // const [getError, setGetError] = React.useState<Error>()
   const [logic, setLogic] = React.useState<boolean>(false)
   const route = useRouter()
   
   const handlerRequest = async (e: any) => {
     e.preventDefault()
     const payload: object = {username: getusername, password: getpassword}
-    const result = await req.post('http://localhost:8080/userlogin', payload).catch(err => err)
+    
+
+    const result = await req.post('https://arthursantos.tech/usersignup', payload).catch(err => err)
     console.log(result)
     if(result instanceof Error) {
       setLogic(true)
@@ -30,7 +31,7 @@ export const Loging = () => {
   }
 
   return (
-    <LoginElement>
+    <SignInElement>
       <div className="box">
         <main>
           <h1>Chat.IO</h1>
@@ -46,11 +47,11 @@ export const Loging = () => {
           </li>
         </ul>
 
-        <button onClick={handlerRequest}>Enter</button> <button ><Link href="/signin"><a>Sign in</a></Link></button>
+        <button onClick={handlerRequest}>Enter</button>
 
-        {logic && <span style={{color: 'red'}}>username or password are incorrect</span>} 
+        {logic && <span style={{color: 'red'}}>user already exists</span>} 
       </div>
       
-    </LoginElement>
+    </SignInElement>
   )
 }
