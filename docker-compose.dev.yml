@@ -7,7 +7,7 @@ services:
     environment:
       PORT: 7000
       JWT_SECRET: chavedev
-      MONGO_URL_DEV: mongodb://root:example@mongo:27017
+      MONGO_URL_DEV: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
     ports:  
       - "80:7000"
   web:
