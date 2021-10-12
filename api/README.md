@@ -1,4 +1,4 @@
-# Real-Time Chat Ezops | API
+# Real-Time Chat Ezops || API
 
 ## Tools 
   ### Languages
