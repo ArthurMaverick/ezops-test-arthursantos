@@ -14,7 +14,7 @@ export const Loging = () => {
   const handlerRequest = async (e: any) => {
     e.preventDefault()
     const payload: object = {username: getusername, password: getpassword}
-    const result = await req.post('https://arthursantos.tech:7000/userlogin', payload).catch(err => err)
+    const result = await req.post('http://arthursantos.tech:2052/userlogin', payload).catch(err => err)
     console.log(result)
     if(result instanceof Error) {
       setLogic(true)

@@ -1,19 +1,19 @@
-version: '3.1'
-services:
-  api:
-    build: ./api
-    restart: always
-    container_name: realtime-chat
-    environment:
-      PORT: 7000
-      JWT_SECRET: chavedev
-      MONGO_URL_DEV: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
-    ports:  
-      - "7000:7000"
+# version: '3.1'
+# services:
+#   api:
+#     build: ./api
+#     restart: always
+#     container_name: realtime-chat
+#     environment:
+#       PORT: 7000
+#       JWT_SECRET: chavedev
+#       MONGO_URL_DEV: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
+#     ports:  
+#       - "2053:7000"
   web:
     build: ./web
     restart: always
-    container_name: realtime-web 
+    container_name: web-realtime 
     ports:
       - "80:3000"
     
