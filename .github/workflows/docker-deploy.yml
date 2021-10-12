@@ -57,7 +57,7 @@ jobs:
         debug: true
         script: |
           sudo docker container rm realtime-chat -f \
-          sudo docker container rm realtime-chat-web -f \
+          sudo docker container rm web-realtime- -f \
           && sudo docker image rm arthursantos2228/realtime-chat \
           && sudo docker image rm arthursantos2228/web-realtime \
           && sudo docker-compose up -d
