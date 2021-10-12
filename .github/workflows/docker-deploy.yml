@@ -7,35 +7,35 @@ on:
     
 jobs:
 
-  upload-docker-container-app-to-remote-repo:
-    name: CI
-    runs-on: ubuntu-latest
-    environment:
-      name: main
+  # upload-docker-container-app-to-remote-repo:
+  #   name: CI
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: main
         
-    steps:
-    - uses: actions/checkout@v2
-    - name: logout
-      run: docker logout 
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: logout
+  #     run: docker logout 
     
-    - name: Build The Docker api Image
-      run: docker build ./api --tag arthursantos2228/realtime-chat:latest
+  #   - name: Build The Docker api Image
+  #     run: docker build ./api --tag arthursantos2228/realtime-chat:latest
 
-    - name: Build The Docker web Image
-      run: docker build ./web --tag arthursantos2228/web-realtime:latest
+  #   - name: Build The Docker web Image
+  #     run: docker build ./web --tag arthursantos2228/web-realtime:latest
 
-    - name: docker login 
-      env:
-        USER_SECURE: ${{secrets.USER_SECRET}}
-        PASSWORD_SECURE: ${{secrets.PASS_SECRET}}
-      run: |
-        docker login -u $USER_SECURE -p $PASSWORD_SECURE 
+  #   - name: docker login 
+  #     env:
+  #       USER_SECURE: ${{secrets.USER_SECRET}}
+  #       PASSWORD_SECURE: ${{secrets.PASS_SECRET}}
+  #     run: |
+  #       docker login -u $USER_SECURE -p $PASSWORD_SECURE 
 
-    - name: Docker push api
-      run: docker push arthursantos2228/realtime-chat:latest
+  #   - name: Docker push api
+  #     run: docker push arthursantos2228/realtime-chat:latest
 
-    - name: Docker push web
-      run: docker push arthursantos2228/web-realtime:latest
+  #   - name: Docker push web
+  #     run: docker push arthursantos2228/web-realtime:latest
 
   download-docker-container-app-in-cloud:
     name: CD
@@ -43,7 +43,7 @@ jobs:
     environment:
       name: deployprod
       url: 'https://arthursantos.tech/'
-    needs: upload-docker-container-app-to-remote-repo
+    # needs: upload-docker-container-app-to-remote-repo
 
     steps:
     - name: deploy with ssh
