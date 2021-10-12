@@ -11,15 +11,15 @@ services:
     ports:  
       - "8433:8433"
     secrets:
-    - certs
-secrets:
-  certs:
-    file: ./agent2-k.pem
-    file: ./agent2-c.pem
+      - certs
   web:
     build: ./web
     restart: always
     container_name: web-realtime 
     ports:
       - "80:3000"
+secrets:
+  certs:
+    file: ./agent2-k.pem
+    file: ./agent2-c.pem
     
