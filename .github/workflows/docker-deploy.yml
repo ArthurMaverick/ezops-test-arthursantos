@@ -22,7 +22,7 @@ jobs:
       run: docker build ./api --tag arthursantos2228/realtime-chat:latest
 
     - name: Build The Docker web Image
-      run: docker build ./web-interface --tag arthursantos2228/web-realtime:latest
+      run: docker build ./web --tag arthursantos2228/web-realtime:latest
 
     - name: docker login 
       env:
