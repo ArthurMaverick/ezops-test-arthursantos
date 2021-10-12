@@ -9,7 +9,7 @@ import req from 'axios'
 import { useRouter } from 'next/dist/client/router';
 
 const Home: NextPage = () => {
-const [socket, setSocket] = useState<Socket>(io('https://arthursantos.tech/', { transports: ['websocket', 'polling', 'flashsocket'] }))
+const [socket, setSocket] = useState<Socket>(io('https://arthursantos.tech:7000/', { transports: ['websocket', 'polling', 'flashsocket'] }))
 const [message, setMessage] = useState<string>('')
 const [name, setName] = useState<any>()
 const [talks, setTalks] = useState<object[]>([])
@@ -49,7 +49,7 @@ useEffect(() => {
 }, [request])
 
 async function request () {
-  await req.post('https://arthursantos.tech/messages', {name: name, message: message} ).catch(err=>err)
+  await req.post('https://arthursantos.tech:7000/messages', {name: name, message: message} ).catch(err=>err)
 }
 
   return (
