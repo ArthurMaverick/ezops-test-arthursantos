@@ -1,4 +1,5 @@
 version: '3.1'
+
 services:
   api:
     build: ./api
@@ -10,16 +11,13 @@ services:
       MONGO_URL_DEV: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
     ports:  
       - "8433:8433"
-    secrets:
-      - certs
+    volumes:
+      - "./certsr:/usr/src/app"
+
   web:
     build: ./web
     restart: always
     container_name: web-realtime 
     ports:
       - "80:3000"
-secrets:
-  certs:
-    file: ./agent2-k.pem
-    file: ./agent2-c.pem
-    
+
