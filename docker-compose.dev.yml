@@ -6,13 +6,11 @@ services:
     restart: always
     container_name: realtime-chat
     environment:
-      PORT: 8433
+      PORT: 8443
       JWT_SECRET: chavedev
       MONGO_URL_DEV: mongodb+srv://arthur2228:EXMHczye9Fxw3z9F@pessoal.svpyb.mongodb.net/simple-chat?retryWrites=true&w=majority
     ports:  
-      - "8433:8433"
-    volumes:
-      - "./certsr:/usr/src/app"
+      - "8443:8443"
 
   web:
     build: ./web
@@ -20,4 +18,3 @@ services:
     container_name: web-realtime 
     ports:
       - "80:3000"
-

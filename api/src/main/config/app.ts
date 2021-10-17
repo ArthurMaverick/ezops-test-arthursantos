@@ -1,5 +1,4 @@
 import fs from 'fs'
-// import path from 'path'
 import express from 'express'
 import {createServer as HttpServer, ServerOptions} from 'https'
 import {Server as SocketServer} from 'socket.io'
@@ -9,10 +8,10 @@ import {setupRoutes} from './routes'
 const options: ServerOptions = {
   key: fs.readFileSync('./certs/agent2-k.pem'),
   cert: fs.readFileSync('./certs/agent2-c.pem'),
-  }
+}
 
 const ExpressApp  = express() 
-const httpServer  =  HttpServer(options, ExpressApp)
+const httpServer  = HttpServer(options, ExpressApp)
 const io          = new SocketServer(httpServer, {
   cors: {
     origin: "*", //change

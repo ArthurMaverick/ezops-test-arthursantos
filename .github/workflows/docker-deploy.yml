@@ -37,19 +37,19 @@ jobs:
     - name: Docker push web
       run: docker push arthursantos2228/web-realtime:latest
 
-  download-docker-container-app-in-cloud:
-    name: CD
+  docker-container-back:
+    name: CD-back
     runs-on: ubuntu-latest
     environment:
       name: deployprod
-      url: 'https://arthursantos.tech/'
+      url: 'https://service.arthursantos.tech:8443/messages'
     needs: upload-docker-container-app-to-remote-repo
 
     steps:
-    - name: deploy with ssh
+    - name: deploy back with ssh
       uses: appleboy/ssh-action@master
       with:
-        host: ${{secrets.HOST}}
+        host: ${{secrets.HOST_ROSE}}
         username: ${{secrets.USERNAME}}
         key: ${{secrets.PRIVATE_KEY}}
         port: ${{secrets.PORT}}
@@ -57,7 +57,29 @@ jobs:
         debug: true
         script: |
           sudo docker container rm realtime-chat -f \
-          && sudo docker container rm web-realtime -f \
           && sudo docker image rm arthursantos2228/realtime-chat -f \
+          && sudo docker-compose up -d
+    
+  docker-container-front:
+    name: CD-front
+    runs-on: ubuntu-latest
+    environment:
+      name: deployprod
+      url: 'https://www.arthursantos.tech/'
+    needs: upload-docker-container-app-to-remote-repo
+
+    steps:
+    - name: deploy front with ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{secrets.HOST_MARIA}}
+        username: ${{secrets.USERNAME}}
+        key: ${{secrets.PRIVATE_KEY}}
+        port: ${{secrets.PORT}}
+        passphrase: ${{secrets.PASSWORD}} 
+        debug: true
+        script: |
+          sudo docker container rm web-realtime -f \
           && sudo docker image rm arthursantos2228/web-realtime -f \
           && sudo docker-compose up -d
+    

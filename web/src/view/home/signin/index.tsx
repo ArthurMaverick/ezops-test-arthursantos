@@ -15,7 +15,7 @@ export const SignIn = () => {
     const payload: object = {username: getusername, password: getpassword}
     
 
-    const result = await req.post('https://arthursantos.tech:8433/usersignup', payload).catch(err => err)
+    const result = await req.post('https://service.arthursantos.tech:8443/usersignup', payload).catch(err => err)
     console.log(result)
     if(result instanceof Error) {
       setLogic(true)
