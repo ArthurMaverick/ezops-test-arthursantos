@@ -27,12 +27,15 @@
 
 
 # Install <a name="install"></a>
+
+  - _expect the local environment to have docker, git and curl installed_
   ### **localhost**
+    
   ```bash
 
   git clone https://github.com/ArthurMaverick/ezops-test-arthursantos.git . \
   && docker-compose up -d \
-  && localhost:3000/
+  && curl http://www.localhost:3000
   
   ```
 
