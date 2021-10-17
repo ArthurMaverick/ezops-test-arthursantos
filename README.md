@@ -42,7 +42,7 @@
 # Web App  <a name="web-app"></a>
 
   ### **Link** 
-   <a src="https://arthursantos.tech">Chat</a> 
+   [>> Chat <<](https://www.arthursantos.tech) 
 
 
 <br />
