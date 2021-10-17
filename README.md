@@ -8,19 +8,19 @@
 </div>
 
 # To run app in localhost 
-### step 1   >>     DOWNLOAD GITHUB REPO
+### step 1   >>    DOWNLOAD GITHUB REPO
   ```bash
 
   git clone https://github.com/ArthurMaverick/ezops-test-arthursantos.git .
   ```
 
-  ### step 2  >>    RUN DOCKER COMPOSE
+  ### step 2  >>   RUN DOCKER COMPOSE
   ```bash
 
   docker-compose up -d
 ```
 
-### step 3   >>    ACCESS THE LINK BELOW
+### step 3   >>   ACCESS THE LINK BELOW
 ```bash
 
   localhost:3000/
