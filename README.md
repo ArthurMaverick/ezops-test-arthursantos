@@ -5,7 +5,7 @@
 <h1 align="center">Real-Time Chat</h1>
 <h1 align="center">Talk to anyone anywhere </h1>
 <div align="center">
-  <img src="https://github.com/ArthurMaverick/ezops-test-arthursantos/blob/dev/docs/images/26FPJGjhefSJuaRhu.gif" width="700" height="600"/>
+  <img src="https://github.com/ArthurMaverick/ezops-test-arthursantos/blob/dev/docs/images/26FPJGjhefSJuaRhu.gif" width="600" />
 </div>
 
 
